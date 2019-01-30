@@ -38,8 +38,8 @@ def index(request):
             Q(title__icontains = search)|
             Q(body__icontains = search)
         )
-    topic = get_object_or_404(Category, name='Tech')                                          ## show some post for selected categories in home page
-    post3 = Post.published_objects.all().filter(category=topic).order_by('-posted')[1:5]
+    topic_cricket = get_object_or_404(Category, name='Cricket')                                          ## show some post for selected categories in home page
+    cricket = Post.published_objects.all().filter(category=topic_cricket).order_by('-posted')[:4]
     topic_sports = get_object_or_404(Category, name='Tech')
     sports = Post.published_objects.all().filter(category=topic_sports).order_by('-posted')[0]
     topic_world = get_object_or_404(Category, name='Worlds')
@@ -63,7 +63,7 @@ def index(request):
         'sports':sports,
         'kategorie':kategorie,
         'recent':recent,
-        'post3': post3,
+        'cricket': cricket,
         'worlds' : worlds,
         'opinion':opinion,
         'health' : health,
