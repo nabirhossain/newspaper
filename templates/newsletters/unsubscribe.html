@@ -1,0 +1,33 @@
+{% extends 'news/base.html' %}
+{% block title %} স্বাগতম {% endblock %}
+
+{% block content %}
+
+<div class="popular-news-area section-padding-80-50" style="margin-top: -100px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <!-- Newsletter Widget -->
+                    <div class="newsletter-widget">
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div {% if message.tags %} class="{{ message.tags }}" {% endif %} role="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                         {% else %}
+                        <h4> Unsubscribe Newsletter</h4>
+                        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                        <form action="{% url 'newsletters:unsubscribe' %}" method="POST">{% csrf_token %}
+                            <input type="text" name="email" placeholder="Email">
+                           <button type="submit" class="btn w-100">Unsubscribe</button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+{% endblock %}

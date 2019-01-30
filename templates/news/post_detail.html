@@ -1,0 +1,242 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% block title %} স্বাগতম {% endblock %}
+
+{% block content %}
+{% if tag %}
+<h2>Posts Tagged with "{{ tag.name }}"</h2>
+{% endif %}
+<!-- ##### Blog Area Start ##### -->
+<div class="blog-area section-padding-0-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="blog-posts-area">
+
+                        <!-- Single Featured Post -->
+                        <div class="single-blog-post featured-post single-post">
+                            <div class="post-thumb">
+                                <a href="#"><img src="{{ post.image.url }}" alt=""></a>
+                            </div>
+                            <div class="post-data">
+                                <a href="#" class="post-catagory">{{ post.category.name }}</a>
+                                    <h1>{{ post.title }}</h1>
+                                <div class="post-meta">
+                                    <p class="post-author">By <a href="#">{{ post.author.auth_name }}</a></p>
+
+                                    <p>{{ post.body|safe }}</p>
+
+                                    <div class="newspaper-post-like d-flex align-items-center justify-content-between">
+                                        <!-- Tags -->
+                                        <div class="newspaper-tags d-flex">
+                                            <span>Tags:</span>
+                                            {% for tag in post.tags.all %}
+                                            <ul class="d-flex">
+                                                <li><a href="">{{ tag.name }}</a></li>
+                                                {% if not forloop.last %}, {% endif %}
+                                            </ul>
+                                            {% endfor %}
+                                        </div>
+
+                                        <!-- Post Like & Post Comment -->
+                                        <div class="d-flex align-items-center post-like--comments">
+                                            <a href="#" class="post-like"><img src="{% static 'img/core-img/like.png' %}" alt=""> <span>392</span></a>
+                                            <a href="#" class="post-comment"><img src="{% static 'img/core-img/chat.png' %}" alt=""> <span>10</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- About Author -->
+                        <div class="blog-post-author d-flex">
+                            <div class="author-thumbnail">
+                                <img src="{{ post.author.auth_image.url }}" alt="">
+                            </div>
+                            <div class="author-info">
+                                <a href="#" class="author-name">{{ post.author.auth_name }} <span>The Author</span></a>
+                                <p>{{ post.author.auth_details }}</p>
+                            </div>
+                        </div>
+                        <div class="pager d-flex align-items-center justify-content-between">
+
+                            <div class="prev">
+                                <a href="{% url 'news:PostDetail' id=post.id|add:'-1' %}" > previous{% if post.id > first.id %}   {% endif %}</a>
+                            </div>
+
+
+                            <div class="next">
+                                <a href="{% url 'news:PostDetail' id=post.id|add:'1' %}">Next{% if post.id < last.id %}   {% endif %}     </a>
+                            </div>
+
+                        </div>
+
+                        <div class="section-heading">
+                            <h6>Related</h6>
+                        </div>
+
+                        <div class="row">
+                            <!-- Single Post -->
+                            {% for r in related %}
+                            <div class="col-12 col-md-6">
+
+                                <div class="single-blog-post style-3 mb-80">
+                                    <div class="post-thumb">
+                                        <a href="{% url 'news:PostDetail' id=r.id %}"><img src="{{ r.image.url }}" alt=""></a>
+                                    </div>
+                                    <div class="post-data">
+                                        <a href="#" class="post-catagory">{{ r.category.name }}</a>
+                                        <a href="{% url 'news:PostDetail' id=r.id %}" class="post-title">
+                                            <h6>{{ r.title }}</h6>
+                                        </a>
+                                        <div class="post-meta d-flex align-items-center">
+                                            <a href="#" class="post-like"><img src="{% static 'img/core-img/like.png' %}" alt=""> <span>392</span></a>
+                                            <a href="#" class="post-comment"><img src="{% static 'img/core-img/chat.png' %}" alt=""> <span>10</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        <!-- Comment Area Start -->
+                        <div class="post-a-comment-area section-padding-80-0">
+                            <h4>Leave a comment</h4>
+                            <!-- Reply Form -->
+                            {% load disqus_tags %}                    <!-- disqus comment system -->
+                            {% set_disqus_title post.title %}        <!-- disqus comment system -->
+                            {% disqus_show_comments %}                <!-- disqus comment system -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <div class="blog-sidebar-area">
+                        <!-- Popular News Widget -->
+                        <div class="single-widget popular-posts-widget">
+                            <div class="container">
+                                  <div class="row">
+                                    <div class="col-xs-12 ">
+                                      <nav>
+                                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-popular" role="tab" aria-controls="nav-home" aria-selected="true">সর্বাধিক পঠিত</a>
+                                          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-recent" role="tab" aria-controls="nav-profile" aria-selected="false">সর্বশেষ</a>
+
+                                        </div>
+                                      </nav>
+                                      <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                                        <div class="tab-pane fade show active" id="nav-popular" role="tabpanel" aria-labelledby="nav-home-tab">
+                                          {% for m in most_popular %}
+                                            <div class="single-popular-post d-flex flex-row">
+                                                <div class="popular-thumb" style="height: 80px; width: 100px;">
+                                                    <img class="img-fluid" src="{{ m.image.url }}" alt="">
+                                                </div>
+                                                <div class="popular-details">
+                                                    <h6><a href="{% url 'news:PostDetail' id=m.id %}">{{ m.title }}</a></h6>
+                                                    <p>{{ m.posted|date:'F, Y' }}</p>
+                                                </div>
+                                            </div>
+                                          {% endfor %}
+                                        </div>
+                                        <div class="tab-pane fade" id="nav-recent" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                          {% for r in recent %}
+                                            <div class="single-popular-post d-flex flex-row">
+                                                <div class="popular-thumb" style="height: 80px; width: 100px;">
+                                                    <img class="img-fluid" src="{{ r.image.url }}" alt="">
+                                                </div>
+                                                <div class="popular-details">
+                                                    <h6><a href="{% url 'news:PostDetail' id=r.id %}">{{ r.title }}</a></h6>
+                                                    <p>{{ r.posted|date:'F, Y' }}</p>
+                                                </div>
+                                            </div>
+                                           {% endfor %}
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                        <!-- Latest Comments Widget -->
+                        <div class="latest-comments-widget">
+                            <h3>Latest Comments</h3>
+
+                            <!-- Single Comments -->
+                            <div class="single-comments d-flex">
+                                <div class="comments-thumbnail mr-15">
+                                    <img src="{% static 'img/bg-img/29.jpg' %}" alt="">
+                                </div>
+                                <div class="comments-text">
+                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
+                                    <p>06:34 am, April 14, 2018</p>
+                                </div>
+                            </div>
+
+                            <!-- Single Comments -->
+                            <div class="single-comments d-flex">
+                                <div class="comments-thumbnail mr-15">
+                                    <img src="{% static 'img/bg-img/30.jpg' %}" alt="">
+                                </div>
+                                <div class="comments-text">
+                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
+                                    <p>06:34 am, April 14, 2018</p>
+                                </div>
+                            </div>
+
+                            <!-- Single Comments -->
+                            <div class="single-comments d-flex">
+                                <div class="comments-thumbnail mr-15">
+                                    <img src="{% static 'img/bg-img/31.jpg' %}" alt="">
+                                </div>
+                                <div class="comments-text">
+                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
+                                    <p>06:34 am, April 14, 2018</p>
+                                </div>
+                            </div>
+
+                            <!-- Single Comments -->
+                            <div class="single-comments d-flex">
+                                <div class="comments-thumbnail mr-15">
+                                    <img src="{% static 'img/bg-img/32.jpg' %}" alt="">
+                                </div>
+                                <div class="comments-text">
+                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
+                                    <p>06:34 am, April 14, 2018</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-add" style="margin-bottom: 30px;">
+                            <a href="#"><img src="{% static 'img/bg-img/hero-add.gif' %}" alt=""></a>
+                        </div>
+                        <!-- Newsletter Widget -->
+                        <div class="newsletter-widget">
+                            <h4>Newsletter</h4>
+                            <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                            <form action="{% url 'newsletters:subscribe' %}" method="POST">{% csrf_token %}
+                                <input type="text" name="email" placeholder="Email">
+                               <button type="submit" class="btn w-100">Subscribe</button>
+                            </form>
+                        </div>
+                        <!-- end Newsletter Widget -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Blog Area End ##### -->
+
+<link rel="stylesheet" href="{% static 'css/nab_tab.css' %}">
+{% endblock %}
+
+<!--
+<div class="col-12 col-lg-6">
+        <input type="text" class="form-control" id="name" placeholder="Name*">
+    </div>
+    <div class="col-12 col-lg-6">
+        <input type="email" class="form-control" id="email" placeholder="Email*">
+    </div>
+    <div class="col-12">
+        <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+    </div>
+-->

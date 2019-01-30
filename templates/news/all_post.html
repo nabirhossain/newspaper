@@ -1,0 +1,145 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% block title %} স্বাগতম {% endblock %}
+
+
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'main.css' %}">
+<section class="latest-post-area pb-120" style="margin-top: -50px;">
+    <div class="container no-padding">
+        <div class="row">
+            <div class="col-lg-8 post-list">
+                <!-- Start latest-post Area -->
+                <div class="latest-post-wrap">
+                    <h4 class="cat-title">Latest News</h4>
+                    {% for p in items %}
+                    <div class="single-latest-post row align-items-center">
+                        <div class="col-lg-5 post-left">
+                            <div class="feature-img relative">
+                                <div class="overlay overlay-bg"></div>
+                                <a href="{% url 'news:PostDetail' id=p.id %}"><img class="img-fluid" src="{{ p.image.url }}" alt=""></a>
+                            </div>
+                            <ul class="tags">
+                                <li><a href="{% url 'news:category' name=p.category.name %}">{{ p.category.name }}</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-7 post-right">
+                            <a href="{% url 'news:PostDetail' id=p.id %}">
+                                <h4>{{ p.title }}</h4>
+                            </a>
+                            <ul class="meta">
+                                <li><a href="{% url 'news:author' name=p.author %}"><span class="lnr lnr-user"></span>{{ p.author.auth_name }}</a></li>
+                                <li><span class="lnr lnr-calendar-full"></span>{{ p.posted|date:'d F, Y' }}</li>
+                                <li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+                            </ul>
+                            <p class="excert">
+                                {{ p.body|truncatewords:25|safe }}
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    <!-- ##### Pagination start ##### -->
+                    {% if items.has_other_pages %}
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination mt-50">
+                            {% if items.has_previous %}
+                            <li class="page-item active">
+                              <a class="page-link" href="?page={{ items.previous_page_number }}">Prev</a>
+                            </li>
+                            {% else %}
+                            <li class="page-item disabled">
+                              <a class="page-link"><span>Prev</span></a>
+                            </li>
+                            {% endif %}
+                            {% for i in page_range %}
+                                {% if items.number == i %}
+                                  <li class="page-item active">
+                                    <a class="page-link" href="#">{{i}}<span class="sr-only">(current)</span></a>
+                                  </li>
+                              {% else %}
+                                    <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                              {% endif %}
+                            {% endfor %}
+                            {% if items.has_next %}
+                                <li class="page-item"><a class="page-link" aria-label="Next" href="?page={{items.next_page_number}}">Next</a></li>
+                            {% else %}
+                                <li class="page-item disabled"><a class="page-link"><span>Next</span></a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+                <!-- ##### Pagination end ##### -->
+
+                </div>
+                <!-- End latest-post Area -->
+            </div>
+            <div class="col-lg-4">
+                <div class="single-widget popular-posts-widget">
+                        <div class="container">
+                              <div class="row">
+                                <div class="col-xs-12 ">
+                                  <nav>
+                                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-popular" role="tab" aria-controls="nav-home" aria-selected="true">সর্বাধিক পঠিত</a>
+                                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-recent" role="tab" aria-controls="nav-profile" aria-selected="false">সর্বশেষ</a>
+
+                                    </div>
+                                  </nav>
+                                  <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-popular" role="tabpanel" aria-labelledby="nav-home-tab">
+                                      {% for m in most_popular %}
+                                        <div class="single-popular-post d-flex flex-row">
+                                            <div class="popular-thumb" style="height: 80px; width: 100px;">
+                                                <img class="img-fluid" src="{{ m.image.url }}" alt="">
+                                            </div>
+                                            <div class="popular-details">
+                                                <h6><a href="{% url 'news:PostDetail' id=m.id %}">{{ m.title }}</a></h6>
+                                                <p>{{ m.posted|date:'F, Y' }}</p>
+                                            </div>
+                                        </div>
+                                      {% endfor %}
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-recent" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                      {% for r in recent %}
+                                        <div class="single-popular-post d-flex flex-row">
+                                            <div class="popular-thumb" style="height: 80px; width: 100px;">
+                                                <img class="img-fluid" src="{{ r.image.url }}" alt="">
+                                            </div>
+                                            <div class="popular-details">
+                                                <h6><a href="{% url 'news:PostDetail' id=r.id %}">{{ r.title }}</a></h6>
+                                                <p>{{ r.posted|date:'F, Y' }}</p>
+                                            </div>
+                                        </div>
+                                       {% endfor %}
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="hero-add" style="margin-bottom: 30px;">
+                        <a href="#"><img src="{% static 'img/bg-img/hero-add.gif' %}" alt=""></a>
+                    </div>
+                    <!-- Newsletter Widget -->
+                    <div class="newsletter-widget">
+                        <h4>Newsletter</h4>
+                        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                        <form action="{% url 'newsletters:subscribe' %}" method="POST">{% csrf_token %}
+                            <input type="text" name="email" placeholder="Email">
+                           <button type="submit" class="btn w-100">Subscribe</button>
+                        </form>
+                    </div>
+                    <!-- end Newsletter Widget -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<link rel="stylesheet" href="{% static 'css/nab_tab.css' %}">
+
+{% endblock %}

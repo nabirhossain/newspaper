@@ -1,0 +1,89 @@
+/*--------------------------- Color variations ----------------------*/
+/* Medium Layout: 1280px */
+/* Tablet Layout: 768px */
+/* Mobile Layout: 320px */
+/* Wide Mobile Layout: 480px */
+/* =================================== */
+/*  Basic Style
+/* =================================== */
+
+/*
+################
+               Start Blog Home  Page style
+################
+*/
+
+.single-widget {
+  border: 1px solid #eee;
+  padding: 30px;
+  margin-bottom: 30px;
+  background: #1e1c27; }
+  @media (max-width: 420px) {
+    .single-widget {
+      padding: 30px 10px; } }
+  .single-widget .title {
+    position: relative;
+    padding: 18px 0 15px;
+    color: #fff;
+    border-bottom: 1px solid rgba(130, 139, 178, 0.4);
+    margin-bottom: 20px; }
+    .single-widget .title:after {
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      height: 1px;
+      width: 50%;
+      background: #828bb2;
+      content: ""; }
+
+
+
+.popular-posts-widget .jq-tab-menu {
+  text-align: center;
+  border-bottom: 1px solid rgba(130, 139, 178, 0.4); }
+  .popular-posts-widget .jq-tab-menu .jq-tab-title {
+    font-size: 12px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0 46px 15px;
+    cursor: pointer; }
+    .popular-posts-widget .jq-tab-menu .jq-tab-title.active {
+      border-bottom: 1px solid #fff; }
+    @media (max-width: 1199px) {
+      .popular-posts-widget .jq-tab-menu .jq-tab-title {
+        padding: 0 28px 15px; } }
+.popular-posts-widget .single-popular-post {
+  border-bottom: 1px solid rgba(130, 139, 178, 0.4);
+  padding: 30px 0; }
+  .popular-posts-widget .single-popular-post:last-child {
+    padding-bottom: 0;
+    border: none; }
+  .popular-posts-widget .single-popular-post .popular-details {
+    margin-left: 20px; }
+    .popular-posts-widget .single-popular-post .popular-details h6 {
+      margin-bottom: 20px; }
+      .popular-posts-widget .single-popular-post .popular-details h6 a {
+        color: #fff;
+        font-size: 14px; }
+    .popular-posts-widget .single-popular-post .popular-details p {
+      margin-bottom: 0;
+      text-transform: uppercase;
+      font-size: 12px; }
+  @media (max-width: 960px) {
+    .popular-posts-widget .single-popular-post {
+      margin-bottom: 20px; } }
+
+
+/*
+################
+               End Blog Home  Page style
+################
+*/
+/*
+################
+               Start Blog Details  Page style
+################
+*/
+
+/*# sourceMappingURL=main.css.map */
