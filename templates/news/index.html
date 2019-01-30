@@ -93,7 +93,7 @@
             <div class="row">
                 <div class="col-12 col-lg-8">
                      <div class="section-heading">
-                        <h6>{{ sports.category.name }} </h6>
+                        <h6> প্রযুক্তি ও খেলাধুলা  </h6>
                     </div>
 
                     <div class="row">
@@ -101,16 +101,16 @@
                         <div class="col-12 col-md-6">
                             <div class="single-blog-post style-3">
                                 <div class="post-thumb">
-                                    <a href="{% url 'news:PostDetail' id=sports.id %}"><img src="{{ sports.image.url }}" alt=""></a>
+                                    <a href="{% url 'news:PostDetail' id=tech.id %}"><img src="{{ tech.image.url }}" alt=""></a>
                                 </div>
                                 <div class="post-data">
-                                    <a href="{% url 'news:category' name=sports.category.name %}" class="post-catagory">{{ sports.category.name }}</a>
-                                    <a href="{% url 'news:PostDetail' id=sports.id %}" class="post-title">
-                                        <h6> {{ sports.title }} </h6>
+                                    <a href="{% url 'news:category' name=tech.category.name %}" class="post-catagory">{{ tech.category.name }}</a>
+                                    <a href="{% url 'news:PostDetail' id=tech.id %}" class="post-title">
+                                        <h6> {{ tech.title }} </h6>
                                     </a>
                                     <p class="post-excerp">
-                                        {{ sports.body|truncatewords:20|safe }}
-                                        <a href="{% url 'news:PostDetail' id=sports.id %}">
+                                        {{ tech.body|truncatewords:20|safe }}
+                                        <a href="{% url 'news:PostDetail' id=tech.id %}">
                                             <button class="btn" type="submit">বিস্তারিত</button>
                                         </a>
                                     </p>
@@ -322,13 +322,13 @@
                 <!-- Editors Pick -->
                 <div class="col-12 col-md-7 col-lg-9">
                     <div class="section-heading">
-                        <h6>হাইলাইট</h6>
+                        <h6>হাইলাইটস</h6>
                     </div>
                     <div class="row">
                         <!-- Single Post -->
                         <div class="col-12 col-md-6 col-lg-6">
-                            <h6><u>Business News</u></h6>
-                                {% for p in post3 %}
+                            <h6><u>সমগ্র বাংলাদেশ</u></h6>
+                                {% for p in bangladesh %}
                             <!-- Single Featured Post -->
                             <div class="single-blog-post small-featured-post d-flex">
                                 <div class="post-thumb">
@@ -349,8 +349,8 @@
 
                         <!-- Single Post -->
                         <div class="col-12 col-md-6 col-lg-6">
-                            <h6><u>Financial News</u></h6>
-                                {% for p in post3 %}
+                            <h6><u>অর্থনীতির সংবাদ</u></h6>
+                                {% for p in finance %}
                             <!-- Single Featured Post -->
                             <div class="single-blog-post small-featured-post d-flex">
                                 <div class="post-thumb">

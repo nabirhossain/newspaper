@@ -40,8 +40,8 @@ def index(request):
         )
     topic_cricket = get_object_or_404(Category, name='Cricket')                                          ## show some post for selected categories in home page
     cricket = Post.published_objects.all().filter(category=topic_cricket).order_by('-posted')[:4]
-    topic_sports = get_object_or_404(Category, name='Tech')
-    sports = Post.published_objects.all().filter(category=topic_sports).order_by('-posted')[0]
+    topic_tech = get_object_or_404(Category, name='Tech')
+    tech = Post.published_objects.all().filter(category=topic_tech).order_by('-posted')[0]
     topic_world = get_object_or_404(Category, name='Worlds')
     worlds = Post.published_objects.all().filter(category=topic_world).order_by('-posted')[:3]
     topic_opinion = get_object_or_404(Category, name='Opinion')
@@ -52,7 +52,10 @@ def index(request):
     entertainment = Post.published_objects.all().filter(category=topic_entertainment).order_by('-posted')[:2]
     topic_business = get_object_or_404(Category, name='Business')
     business = Post.published_objects.all().filter(category=topic_business).order_by('-posted')[:3]
-
+    topic_bd = get_object_or_404(Category, name='Bangladesh')
+    bangladesh = Post.published_objects.all().filter(category=topic_bd).order_by('-posted')[:4]
+    topic_finance = get_object_or_404(Category, name='Finance')
+    finance = Post.published_objects.all().filter(category=topic_finance).order_by('-posted')[:4]
     context = {
         'post':post,
         'post1':post1,
@@ -60,7 +63,7 @@ def index(request):
         'all_post' : all_post,
         'breaking' : breaking,
         'most_popular':most_popular,
-        'sports':sports,
+        'tech':tech,
         'kategorie':kategorie,
         'recent':recent,
         'cricket': cricket,
@@ -69,6 +72,8 @@ def index(request):
         'health' : health,
         'entertainment' : entertainment,
         'business' : business,
+        'bangladesh' : bangladesh,
+        'finance' : finance,
 
     }
     return render(request,'news/index.html', context)
