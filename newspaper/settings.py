@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'disqus',
 ]
 
-SITE_ID = 1
+SITE_ID = 2
 
 DISQUS_WEBSITE_SHORTNAME = 'nfc-1'
 
@@ -208,3 +208,6 @@ OPTIONS: {
      'use_unicode': True,
      'init_command': "SET NAMES utf8mb4;",
  }
+
+
+
