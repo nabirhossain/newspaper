@@ -25,8 +25,8 @@ SECRET_KEY = 'z%w-bdr7+91n-gnr-e)ze3w(mei0crga6za_6%zq2+v0gjn+)6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-#ALLOWED_HOSTS = ['newspaper365.herokuapp.com']
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['bdnews365.herokuapp.com']
 
 
 # Application definition

@@ -2,39 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33eede57-70b8-461f-80b4-f6c15a238046" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/news/static/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/news/author_posts_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/registration/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/static/css/util.css" beforeDir="false" afterPath="$PROJECT_DIR$/news/static/css/util.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/static/img/bg-img/bg-01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/news/static/img/bg-img/bg-01.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/static/img/bg-img/bg-registration-form-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/news/static/img/bg-img/bg-registration-form-2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/static/img/bg-img/registration-form-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/news/static/img/bg-img/registration-form-2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/static/js/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/news/static/js/form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/static/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/newspaper/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/newspaper/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runtime.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/nab_tab.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/nab_tab.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/news/1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news/1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/news/all_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news/all_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/news/author_profile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/news/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/news/category.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news/category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/news/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/news/post_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news/post_create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/news/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news/post_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +24,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/news/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
@@ -74,6 +42,18 @@
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/newspaper/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+              <folding>
+                <element signature="e#309#366#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -167,7 +147,6 @@
         <option value="$PROJECT_DIR$/templates/news/post_detail.html" />
         <option value="$PROJECT_DIR$/news/forms.py" />
         <option value="$PROJECT_DIR$/templates/news/post_create.html" />
-        <option value="$PROJECT_DIR$/newspaper/settings.py" />
         <option value="$PROJECT_DIR$/news/admin.py" />
         <option value="$PROJECT_DIR$/news/urls.py" />
         <option value="$PROJECT_DIR$/templates/news/author_profile.html" />
@@ -180,6 +159,7 @@
         <option value="$PROJECT_DIR$/static/css/nab_tab.css" />
         <option value="$PROJECT_DIR$/news/views.py" />
         <option value="$PROJECT_DIR$/templates/news/index.html" />
+        <option value="$PROJECT_DIR$/newspaper/settings.py" />
       </list>
     </option>
   </component>
@@ -206,13 +186,7 @@
             <path>
               <item name="newspaper" type="b2602c69:ProjectViewProjectNode" />
               <item name="newspaper" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="newspaper" type="b2602c69:ProjectViewProjectNode" />
               <item name="newspaper" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -448,16 +422,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/newspaper/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
-          <folding>
-            <element signature="e#309#366#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/news/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
@@ -603,6 +567,16 @@
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newspaper/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#309#366#0" expanded="true" />
           </folding>
         </state>
       </provider>
