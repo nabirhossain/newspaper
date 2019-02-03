@@ -39,23 +39,33 @@ def index(request):
             Q(body__icontains = search)
         )
     topic_cricket = get_object_or_404(Category, name='Cricket')                                          ## show some post for selected categories in home page
-    cricket = Post.published_objects.all().filter(category=topic_cricket).order_by('-posted')[:4]
+    cricket = Post.published_objects.all().filter(category=topic_cricket).order_by('-posted')[:2]
+    cricket1 = Post.published_objects.all().filter(category=topic_cricket).order_by('-posted')[0]
     topic_tech = get_object_or_404(Category, name='Tech')
-    tech = Post.published_objects.all().filter(category=topic_tech).order_by('-posted')[0]
+    tech = Post.published_objects.all().filter(category=topic_tech).order_by('-posted')[:5]
+    tech1 = Post.published_objects.all().filter(category=topic_tech).order_by('-posted')[0]
     topic_world = get_object_or_404(Category, name='Worlds')
     worlds = Post.published_objects.all().filter(category=topic_world).order_by('-posted')[:3]
+    worlds1 = Post.published_objects.all().filter(category=topic_world).order_by('-posted')[0]
     topic_opinion = get_object_or_404(Category, name='Opinion')
     opinion = Post.published_objects.all().filter(category=topic_opinion).order_by('-posted')[:3]
+    opinion1 = Post.published_objects.all().filter(category=topic_opinion).order_by('-posted')[0]
     topic_health = get_object_or_404(Category, name='Health')
-    health = Post.published_objects.all().filter(category=topic_health).order_by('-posted')[0]
+    health = Post.published_objects.all().filter(category=topic_health).order_by('-posted')[:3]
+    health1 = Post.published_objects.all().filter(category=topic_health).order_by('-posted')[0]
     topic_entertainment = get_object_or_404(Category, name='Entertainment')
-    entertainment = Post.published_objects.all().filter(category=topic_entertainment).order_by('-posted')[:2]
+    entertainment = Post.published_objects.all().filter(category=topic_entertainment).order_by('-posted')[:4]
+    entertainment1 = Post.published_objects.all().filter(category=topic_entertainment).order_by('-posted')[0]
     topic_business = get_object_or_404(Category, name='Business')
     business = Post.published_objects.all().filter(category=topic_business).order_by('-posted')[:3]
+    business1 = Post.published_objects.all().filter(category=topic_business).order_by('-posted')[0]
     topic_bd = get_object_or_404(Category, name='Bangladesh')
     bangladesh = Post.published_objects.all().filter(category=topic_bd).order_by('-posted')[:4]
+    bangladesh1 = Post.published_objects.all().filter(category=topic_bd).order_by('-posted')[0]
     topic_finance = get_object_or_404(Category, name='Finance')
     finance = Post.published_objects.all().filter(category=topic_finance).order_by('-posted')[:4]
+    finance1 = Post.published_objects.all().filter(category=topic_finance).order_by('-posted')[0]
+
     context = {
         'post':post,
         'post1':post1,
@@ -64,16 +74,26 @@ def index(request):
         'breaking' : breaking,
         'most_popular':most_popular,
         'tech':tech,
+        'tech1':tech1,
         'kategorie':kategorie,
         'recent':recent,
         'cricket': cricket,
+        'cricket1': cricket1,
         'worlds' : worlds,
+        'worlds1' : worlds1,
         'opinion':opinion,
+        'opinion1':opinion1,
         'health' : health,
+        'health1' : health1,
         'entertainment' : entertainment,
+        'entertainment1' : entertainment1,
         'business' : business,
+        'business1' : business1,
         'bangladesh' : bangladesh,
+        'bangladesh1' : bangladesh1,
         'finance' : finance,
+        'finance1' : finance1,
+
 
     }
     return render(request,'news/index.html', context)
@@ -81,12 +101,41 @@ def index(request):
 
 @login_required
 def post_create(request):
+    if request.user.is_authenticated:
+        u = get_object_or_404(author, auth_name=request.user.id)
         form = CreateForm(request.POST or None, request.FILES or None)
         if form.is_valid():
             instance = form.save(commit=False)
+            instance.author = u
             instance.save()
             return redirect('news:index')
+        return render(request, 'news/post_create.html', {"form": form, })
+    else:
+        return redirect('news:index')
+
+def PostUpdate(request, id):
+    if request.user.is_authenticated:
+        u = get_object_or_404(author, auth_name= request.user.id)
+        post = get_object_or_404(Post, id=id)
+        form = CreateForm(request.POST or None, request.FILES or None, instance=post)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.author = u
+            instance.save()
+            messages.success(request, "Post updated successfully")
+            return redirect('news:CreateProfile')
         return render(request, 'news/post_create.html', {"form": form})
+    else:
+        return redirect('news:login')
+
+def PostDelete(request, id):
+    if request.user.is_authenticated:
+        post = get_object_or_404(Post, id=id)
+        post.delete()
+        messages.warning(request, 'post deleted successfully')
+        return redirect('news:CreateProfile')
+    else:
+        return redirect('news:login')
 
 
 def PostDetail(request, id, tag_slug=None):
@@ -180,10 +229,10 @@ def AllPost(request):
 def PostCategory(request, name):
     topic = get_object_or_404(Category, name=name)
     post = Post.published_objects.filter(category=topic.id)
-    breaking = Post.published_objects.all().order_by('-posted')[:6]
-    most_popular = Post.published_objects.all().order_by('-views')[:4]  ## SHOW MOST POULAR NEWS
-    recent = Post.published_objects.filter().order_by('-posted')[0:4]
     kategorie = Category.objects.filter(parent=None).order_by('name')
+    breaking = Post.published_objects.all().order_by('-posted')[:6]
+    most_popular = Post.published_objects.filter(category=topic.id).order_by('-views')[:4]  ## SHOW MOST POULAR NEWS
+    recent = Post.published_objects.filter(category=topic.id).order_by('-posted')[0:4]
     paginator = Paginator(post, 2)
     page = request.GET.get('page')
     try:
@@ -206,13 +255,41 @@ def PostCategory(request, name):
         'page_range': page_range,
         'most_popular': most_popular,
         'recent': recent,
+
     }
 
     return render(request,'news/category.html', context)
 
 
+def signup(request):
+    kategorie = Category.objects.filter(parent=None).order_by('name')
+    breaking = Post.published_objects.all().order_by('-posted')[:6]
+    if request.method == 'POST':
+        form = registerUser(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('news:index')
+    else:
+        form = registerUser()
+    context = {
+        'form' : form,
+        'breaking': breaking,
+        'kategorie': kategorie,
+    }
+    return render(request, 'registration/signup.html', context)
 
 def LogIn(request):
+    kategorie = Category.objects.filter(parent=None).order_by('name')
+    breaking = Post.published_objects.all().order_by('-posted')[:6]
+    context = {
+
+        'breaking': breaking,
+        'kategorie': kategorie,
+    }
     if request.user.is_authenticated:
         return redirect('news:index')
     else:
@@ -226,36 +303,11 @@ def LogIn(request):
             else:
                 messages.add_message(request, messages.ERROR, 'username or password not match')
                 return render(request, 'registration/login.html')
-    return render(request,'registration/login.html')
+    return render(request,'registration/login.html', context)
 
 def LogOut(request):
     logout(request)
     return redirect('news:index')
-
-
-
-def register(request):
-    form =registerUser(request.POST or None)
-    if form.is_valid():
-        instance = form.save(commit = False)
-        instance.is_active = False
-        instance.save()
-        site = get_current_site(request)
-        mail_subject = "confirmation message for blog"
-        message = render_to_string('confirmation_email.html',{
-            'user': instance,
-            'domain': site.domain,
-            'uid' : instance.id,
-            'token': activation_token.make_token(instance)
-        })
-        to_email = form.cleaned_data.get('email')
-        to_list = [to_email]
-        from_email = settings.EMAIL_HOST_USER
-        send_mail(mail_subject, message, from_email, to_list, fail_silently=True)
-        return HttpResponse("<h1>Thanks for your registration. A confirmation link was sent to your mail</h1>")
-        #messages.success(request, 'Registration has been successfully completed')
-        #return redirect('blog:login')
-    return render(request, 'registration/register.html', {"form":form})
 
 def CreateProfile(request):
     if request.user.is_authenticated:
@@ -264,7 +316,7 @@ def CreateProfile(request):
         if author_profile:
             authorUser = get_object_or_404(author, auth_name = request.user.id)
             post = Post.published_objects.filter(author = authorUser.id)
-            return render(request, 'news/author_profile.html', {"post":post}, {"user":authorUser})
+            return render(request, 'news/author_posts_list.html', {"post":post}, {"user":authorUser})
         else:
             form = createAuthor(request.POST or None, request.FILES or None)
             if form.is_valid():

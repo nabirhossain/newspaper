@@ -5,12 +5,15 @@
 {% block content %}
 
 <!-- ##### Featured Post Area Start ##### -->
-<div class="featured-post-area">
+
+<div class="featured-post-area" style="margin-top:-60px">
     <div class="container">
-        <div class="row">
+        <div class="section-heading">
+            <a href="{% url 'news:category' name=cricket1.category.name %}"><h6> দেশের খবর  </h6></a>
+         </div>
+        <div class="row" style="margin-top:-60px">
             <div class="col-12 col-md-6 col-lg-8">
                 <div class="row">
-
                     <!-- Single Featured Post -->
                     <div class="col-12 col-lg-7">
                             
@@ -28,8 +31,8 @@
                                     <p class="post-excerp">
                                             {{ post.body|truncatewords:35|safe }}
 
-                                    <a href="{% url 'news:PostDetail' id=post.id %}">
-                                        <button class="btn" type="submit">বিস্তারিত</button>
+                                    <a href="{% url 'news:PostDetail' id=post.id %}" style="color: red;">
+                                        বিস্তারিত
                                     </a>
                                     </p>
                                 </div>
@@ -78,8 +81,8 @@
                     </div>
                 </div>
                 {% endfor %}
-                <a href="{% url 'news:AllPost' %}">
-                    <button class="btn newspaper-btn mt-3 w-10" type="submit">All News</button>
+                <a href="{% url 'news:AllPost' %}" style="color: red; font-size: 20px;">
+                    সব খবর >>
                 </a>
             </div>
         </div>
@@ -89,29 +92,29 @@
 
 <!-- ##### Popular News Area Start ##### -->
     <div class="popular-news-area section-padding-80-50">
-        <div class="container">
+        <div class="container" style="margin-top: -60px;">
             <div class="row">
                 <div class="col-12 col-lg-8">
                      <div class="section-heading">
-                        <h6> প্রযুক্তি ও খেলাধুলা  </h6>
+                         <a href="{% url 'news:category' name=cricket1.category.name %}"><h6>  খেলাধুলা  </h6></a>
                     </div>
 
-                    <div class="row">
+                    <div class="row" style="margin-top: -60px;">
                         <!-- Single Post -->
                         <div class="col-12 col-md-6">
                             <div class="single-blog-post style-3">
                                 <div class="post-thumb">
-                                    <a href="{% url 'news:PostDetail' id=tech.id %}"><img src="{{ tech.image.url }}" alt=""></a>
+                                    <a href="{% url 'news:PostDetail' id=cricket1.id %}"><img src="{{ cricket1.image.url }}" alt=""></a>
                                 </div>
                                 <div class="post-data">
-                                    <a href="{% url 'news:category' name=tech.category.name %}" class="post-catagory">{{ tech.category.name }}</a>
-                                    <a href="{% url 'news:PostDetail' id=tech.id %}" class="post-title">
-                                        <h6> {{ tech.title }} </h6>
+                                    <a href="{% url 'news:category' name=cricket1.category.name %}" class="post-catagory">{{ cricket1.category.name }}</a>
+                                    <a href="{% url 'news:PostDetail' id=cricket1.id %}" class="post-title">
+                                        <h6> {{ cricket1.title }} </h6>
                                     </a>
                                     <p class="post-excerp">
-                                        {{ tech.body|truncatewords:20|safe }}
-                                        <a href="{% url 'news:PostDetail' id=tech.id %}">
-                                            <button class="btn" type="submit">বিস্তারিত</button>
+                                        {{ cricket1.body|truncatewords:20|safe }}
+                                        <a href="{% url 'news:PostDetail' id=cricket1.id %}" style="color: red;">
+                                            বিস্তারিত
                                         </a>
                                     </p>
                                 </div>
@@ -120,72 +123,68 @@
 
                         <!-- Single Post -->
                         <div class="col-12 col-md-6 col-lg-6">
-                                {% for p in cricket %}
+                            {% for p in cricket %}
                             <!-- Single Featured Post -->
                             <div class="single-blog-post small-featured-post d-flex">
                                 <div class="post-thumb">
                                     <a href="{% url 'news:PostDetail' id=p.id %}"><img src="{{ p.image.url }}" alt=""></a>
                                 </div>
                                 <div class="post-data">
-                                    <a href="{% url 'news:category' name=p.category.name %}" class="post-catagory">{{ p.category.name }}</a>
                                     <div class="post-meta">
                                         <a href="{% url 'news:PostDetail' id=p.id %}" class="post-title">
                                             <h6>{{ p.title }}</h6>
                                         </a>
-                                        <p class="post-date"><span>{{ p.posted|date:'H:i A' }}</span> | <span>{{ p.posted|date:'M y' }}</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                                {% endfor %}
-                        </div>
-
-                        <div class="section-heading">
-                            <h6>অর্থ-বাজার-বাণিজ্য</h6>
-                        </div>
-
-                        <div class="row">
-                            {% for p in business %}
-                             <!-- Single Post -->
-                            <div class="col-12 col-md-6 col-lg-4" style="matgin-top: 50px;">
-                                <div class="single-blog-post style-3">
-                                    <div class="post-thumb">
-                                        <a href="{% url 'news:PostDetail' id=p.id %}"><img src="{{ p.image.url }}" alt=""></a>
-                                    </div>
-                                    <div class="post-data">
                                         <a href="{% url 'news:category' name=p.category.name %}" class="post-catagory">{{ p.category.name }}</a>
-                                        <a href="{% url 'news:PostDetail' id=p.id %}" class="post-title">
-                                            <h6>{{ p.title }}</h6>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
                             {% endfor %}
                         </div>
+
+                        <div class="section-heading">
+                            <a href="{% url 'news:category' name=business1.category.name %}"><h6>অর্থ-বাজার-বাণিজ্য</h6></a>
+                        </div>
+                        <div class="row" style="margin-top:-60px">
+                             <!-- Single Post -->
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-blog-post style-3">
+                                    <div class="post-thumb">
+                                        <a href="{% url 'news:PostDetail' id=business1.id %}"><img src="{{ business1.image.url }}" alt=""></a>
+                                    </div>
+                                    <div class="post-data">
+                                        <a href="{% url 'news:PostDetail' id=business1.id %}" class="post-title">
+                                            <h6>{{ business1.title }}</h6>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="col-12 col-md-6 col-lg-6">
+                                {% for p in business %}
+                                <!-- Single Featured Post -->
+                                <div class="single-blog-post small-featured-post d-flex">
+                                    <div class="post-thumb">
+                                        <a href="{% url 'news:PostDetail' id=p.id %}"><img src="{{ p.image.url }}" alt=""></a>
+                                    </div>
+                                    <div class="post-data">
+                                        <div class="post-meta">
+                                            <a href="{% url 'news:PostDetail' id=p.id %}" class="post-title">
+                                                <h6>{{ p.title }}</h6>
+                                            </a>
+                                            <a href="{% url 'news:category' name=p.category.name %}" class="post-catagory">{{ p.category.name }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
                     </div>
 
                     <div class="section-heading">
-                        <h6>স্বাস্থ্য ও বিনোদন</h6>
+                        <a href="{% url 'news:category' name=health1.category.name %}"><h6>লাইফ স্টাইল</h6></a>
                     </div>
-
                     <div class="row" style="margin-top:-60px">
-                        <!-- Health Post -->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="single-blog-post style-3">
-                                <div class="post-thumb">
-                                    <a href="{% url 'news:PostDetail' id=health.id %}"><img src="{{ health.image.url }}" alt=""></a>
-                                </div>
-                                <div class="post-data">
-                                    <a href="{% url 'news:category' name=health.category.name %}" class="post-catagory">{{ health.category.name }}</a>
-                                    <a href="{% url 'news:PostDetail' id=health.id %}" class="post-title">
-                                        <h6>{{ health.title }}</h6>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end Health Post -->
-
                         <!-- Entertainment Post -->
-                        {% for p in entertainment %}
+                        {% for p in health %}
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="single-blog-post style-3">
                                 <div class="post-thumb">
@@ -201,7 +200,55 @@
                         </div>
                          {% endfor %}
                         <!-- End Entertainment Post -->
+
                     </div>
+                    <div class="section-heading">
+                        <a href="{% url 'news:category' name=entertainment1.category.name %}"><h6>বিনোদন</h6></a>
+                    </div>
+                    <div class="row" style="margin-top:-60px">
+                        <!-- Single Post -->
+                        <div class="col-12 col-md-6">
+                            <div class="single-blog-post style-3">
+                                <div class="post-thumb">
+                                    <a href="{% url 'news:PostDetail' id=entertainment1.id %}"><img src="{{ entertainment1.image.url }}" alt=""></a>
+                                </div>
+                                <div class="post-data">
+                                    <a href="{% url 'news:category' name=entertainment1.category.name %}" class="post-catagory">{{ entertainment1.category.name }}</a>
+                                    <a href="{% url 'news:PostDetail' id=entertainment1.id %}" class="post-title">
+                                        <h6> {{ entertainment1.title }} </h6>
+                                    </a>
+                                    <p class="post-excerp">
+                                        {{ entertainment1.body|truncatewords:20|safe }}
+                                        <a href="{% url 'news:PostDetail' id=entertainment1.id %}" style="color: red;">
+                                            বিস্তারিত
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Post -->
+                        <div class="col-12 col-md-6 col-lg-6">
+                            {% for p in entertainment %}
+                            <!-- Single Featured Post -->
+                            <div class="single-blog-post small-featured-post d-flex">
+                                <div class="post-thumb">
+                                    <a href="{% url 'news:PostDetail' id=p.id %}"><img src="{{ p.image.url }}" alt=""></a>
+                                </div>
+                                <div class="post-data">
+                                    <a href="{% url 'news:category' name=p.category.name %}" class="post-catagory">{{ p.category.name }}</a>
+                                    <div class="post-meta">
+                                        <a href="{% url 'news:PostDetail' id=p.id %}" class="post-title">
+                                            <h6>{{ p.title }}</h6>
+                                        </a>
+                                        <p class="post-date"><span>{{ p.posted|date:'H:i A' }}</span> | <span>{{ p.posted|date:'M y' }}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                             {% endfor %}
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="col-12 col-lg-4">
@@ -221,11 +268,10 @@
                                       {% for m in most_popular %}
                                         <div class="single-popular-post d-flex flex-row">
                                             <div class="popular-thumb" style="height: 40px; width: 100px;">
-                                                <img class="img-fluid" src="{{ m.image.url }}" alt="">
+                                                <a href="{% url 'news:PostDetail' id=m.id %}"><img class="img-fluid" src="{{ m.image.url }}" alt=""></a>
                                             </div>
                                             <div class="popular-details">
                                                 <h6><a href="{% url 'news:PostDetail' id=m.id %}">{{ m.title }}</a></h6>
-                                                <p>{{ m.posted|date:'F, Y' }}</p>
                                             </div>
                                         </div>
                                       {% endfor %}
@@ -234,11 +280,10 @@
                                       {% for r in recent %}
                                         <div class="single-popular-post d-flex flex-row">
                                             <div class="popular-thumb" style="height: 80px; width: 100px;">
-                                                <img class="img-fluid" src="{{ r.image.url }}" alt="">
+                                                <a href="{% url 'news:PostDetail' id=r.id %}"><img class="img-fluid" src="{{ r.image.url }}" alt=""></a>
                                             </div>
                                             <div class="popular-details">
                                                 <h6><a href="{% url 'news:PostDetail' id=r.id %}">{{ r.title }}</a></h6>
-                                                <p>{{ r.posted|date:'F, Y' }}</p>
                                             </div>
                                         </div>
                                        {% endfor %}
@@ -249,26 +294,37 @@
                               </div>
                         </div>
                     </div>
-
-                    <div class="hero-add" style="margin-bottom: 30px;">
-                        <a href="#"><img src="{% static 'img/bg-img/hero-add.gif' %}" alt=""></a>
+                    <div class="section-heading">
+                        <a href="{% url 'news:category' name=tech1.category.name %}"><h6>বিজ্ঞান-প্রযুক্তির খবর</h6></a>
                     </div>
-
+                    <div class="row" style="margin-top: -60px;">
+                        {% for p in tech %}
+                        <!-- Single Featured Post -->
+                        <div class="single-blog-post small-featured-post d-flex">
+                            <div class="post-thumb">
+                                <a href="{% url 'news:PostDetail' id=p.id %}"><img src="{{ p.image.url }}" alt=""></a>
+                            </div>
+                            <div class="post-data">
+                                <a href="{% url 'news:category' name=p.category.name %}" class="post-catagory">{{ p.category.name }}</a>
+                                <div class="post-meta">
+                                    <a href="{% url 'news:PostDetail' id=p.id %}" class="post-title">
+                                        <h6>{{ p.title }}</h6>
+                                    </a>
+                                    <p class="post-date"><span>{{ p.posted|date:'H:i A' }}</span> | <span>{{ p.posted|date:'M y' }}</span></p>
+                                </div>
+                            </div>
+                        </div>
+                         {% endfor %}
+                    </div>
                     <!-- Newsletter Widget -->
-                    <div class="newsletter-widget">
-                        <h4>Newsletter</h4>
-                        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                    <div class="newsletter-widget" style="margin-top: 60px;">
+                        <h4>নিউজলেটারের জন্য নিবন্ধন করুন</h4>
                         <form action="{% url 'newsletters:subscribe' %}" method="POST">{% csrf_token %}
                             <input type="text" name="email" placeholder="Email">
                            <button type="submit" class="btn w-100">Subscribe</button>
                         </form>
                     </div>
                     <!-- end Newsletter Widget -->
-
-                    <div class="hero-add" style="margin-top: 30px;">
-                       <a href="#"><img src="{% static 'img/bg-img/hero-add.gif' %}" alt=""></a>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -276,7 +332,7 @@
     <!-- ##### Popular News Area End ##### -->
 
 <!-- ##### Video Post Area Start ##### -->
-    <div class="video-post-area bg-img bg-overlay" style="background-image: url(img/bg-img/bg1.jpg);">
+    <div class="video-post-area bg-img bg-overlay" style="background-image: url({% static 'img/bg-img/bg1.jpg' %});">
         <div class="container">
             <div class="row justify-content-center">
                 <!-- Single Video Post -->
@@ -320,14 +376,14 @@
         <div class="container">
             <div class="row">
                 <!-- Editors Pick -->
-                <div class="col-12 col-md-7 col-lg-9">
+                <div class="col-12 col-md-7 col-lg-9" >
                     <div class="section-heading">
                         <h6>হাইলাইটস</h6>
                     </div>
-                    <div class="row">
+                    <div class="row" style="margin-top:-50px">
                         <!-- Single Post -->
                         <div class="col-12 col-md-6 col-lg-6">
-                            <h6><u>সমগ্র বাংলাদেশ</u></h6>
+                            <a href="{% url 'news:category' name=bangladesh1.category.name %}"><h6>সমগ্র বাংলাদেশ</h6></a>
                                 {% for p in bangladesh %}
                             <!-- Single Featured Post -->
                             <div class="single-blog-post small-featured-post d-flex">
@@ -349,7 +405,7 @@
 
                         <!-- Single Post -->
                         <div class="col-12 col-md-6 col-lg-6">
-                            <h6><u>অর্থনীতির সংবাদ</u></h6>
+                            <a href="{% url 'news:category' name=finance1.category.name %}"><h6>ব্যবসা ও অর্থনীতির সংবাদ</h6></a>
                                 {% for p in finance %}
                             <!-- Single Featured Post -->
                             <div class="single-blog-post small-featured-post d-flex">
@@ -371,10 +427,10 @@
                     </div>
                     <div class="row" style="margin-top:40px">
                         <div class="section-heading">
-                            <h6>মতামত</h6>
+                            <a href="{% url 'news:category' name=opinion1.category.name %}"><h6>মতামত</h6></a>
                         </div>
                         <div class="row" style="margin-top:-40px">
-                          {% for p in opinion %}
+                        {% for p in opinion %}
                         <!-- Single Post -->
                         <div class="col-12 col-lg-4" >
                             <div class="single-blog-post">
@@ -391,7 +447,7 @@
                                 </div>
                             </div>
                         </div>
-                             {% endfor %}
+                       {% endfor %}
                     </div>
                 </div>
             </div>
@@ -399,7 +455,7 @@
                 <!-- World News -->
                 <div class="col-12 col-md-5 col-lg-3">
                     <div class="section-heading" >
-                        <h6>সাম্প্রতিক বিশ্ব</h6>
+                        <a href="{% url 'news:category' name=worlds1.category.name %}"><h6>আন্তর্জাতিক সংবাদ</h6></a>
                     </div>
                     {% for p in worlds %}
                     <!-- Single Post -->

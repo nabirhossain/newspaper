@@ -10,7 +10,6 @@ class CreateForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = [
-            'author',
             'title',
             'slug',
             'body',
@@ -38,6 +37,13 @@ class CommentForm(forms.ModelForm):
 
 
 class registerUser(UserCreationForm):
+    first_name = forms.CharField(label="", widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(label="", widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(label="", widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    username = forms.CharField(label="", widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password1 = forms.CharField(label="", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    password2 = forms.CharField(label="", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
     class Meta:
         model = User
         fields = [

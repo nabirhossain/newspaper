@@ -4,7 +4,7 @@ from import_export.admin import ImportExportModelAdmin
 # Register your models here.
 @admin.register(author)
 class AuthorAdmin(ImportExportModelAdmin):
-    list_display = ["__str__"]
+    list_display = ["__str__", 'id',]
     search_fields = ["auth_name"]
     pass
 
@@ -18,7 +18,7 @@ class CategoryAdmin(ImportExportModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(ImportExportModelAdmin):
-    list_display = ["__str__",'views','category','posted']
+    list_display = ["__str__",'views','category','status','posted']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ['posted','author']
     search_fields = ["__str__"]
