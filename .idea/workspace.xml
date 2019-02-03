@@ -50,8 +50,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/newspaper/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="210">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="e#309#366#0" expanded="true" />
               </folding>
@@ -229,6 +229,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="28" width="1533" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1616965" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -567,8 +568,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/newspaper/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="210">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="e#309#366#0" expanded="true" />
           </folding>
