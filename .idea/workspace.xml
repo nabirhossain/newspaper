@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="33eede57-70b8-461f-80b4-f6c15a238046" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/pixel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newspaper/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/newspaper/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/news/1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news/1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/news/all_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news/all_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/news/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/news/category.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news/category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/news/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/news/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news/post_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/signup.html" afterDir="false" />
-    </list>
+    <list default="true" id="33eede57-70b8-461f-80b4-f6c15a238046" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
