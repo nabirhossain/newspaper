@@ -27,7 +27,7 @@ def index(request):
     kategorie = Category.objects.filter(parent=None).order_by('name')                       ## SHOW CATEGORY AND SUB-CATEGORY IN DROPDOWN LIST
     post = Post.published_objects.all().order_by('-posted')[0]                              ## SHOW POST FOR FIRST GRID
     post1 = Post.published_objects.all().order_by('-posted')[1:3]                           ## SHOW POST FOR SECOND GRID
-    post2 = Post.published_objects.all().order_by('-posted')[3:8]                           ## SHOW POST FOR THIRD GRID
+    post2 = Post.published_objects.all().order_by('-posted')[3:9]                           ## SHOW POST FOR THIRD GRID
     breaking = Post.published_objects.all().order_by('-posted')[:6]                         ## SHOW BREAKING NEWS
     all_post = Post.published_objects.all().order_by('-posted')                             ## SHOW ALL POSTS
     most_popular = Post.published_objects.all().order_by('-views')[:4]                      ## SHOW MOST POULAR NEWS
@@ -39,7 +39,7 @@ def index(request):
             Q(body__icontains = search)
         )
     topic_cricket = get_object_or_404(Category, name='Cricket')                                          ## show some post for selected categories in home page
-    cricket = Post.published_objects.all().filter(category=topic_cricket).order_by('-posted')[:2]
+    cricket = Post.published_objects.all().filter(category=topic_cricket).order_by('-posted')[:4]
     cricket1 = Post.published_objects.all().filter(category=topic_cricket).order_by('-posted')[0]
     topic_tech = get_object_or_404(Category, name='Tech')
     tech = Post.published_objects.all().filter(category=topic_tech).order_by('-posted')[:5]
@@ -143,11 +143,11 @@ def PostDetail(request, id, tag_slug=None):
     post2 = Post.published_objects.all().order_by('-posted')[:5]
     breaking = Post.published_objects.all().order_by('-posted')[:6]
     kategorie = Category.objects.filter(parent=None).order_by('name')
-    most_popular = Post.published_objects.all().order_by('-views')[:4]  ## SHOW MOST POULAR NEWS
-    recent = Post.published_objects.filter().order_by('-posted')[0:4]
+    most_popular = Post.published_objects.all().order_by('-views')[:5]  ## SHOW MOST POULAR NEWS
+    recent = Post.published_objects.filter().order_by('-posted')[0:5]
     first = Post.published_objects.first()
     last = Post.published_objects.last()
-    related = Post.published_objects.filter(category=post.category).exclude(id=id)[:2]
+    related = Post.published_objects.filter(category=post.category).exclude(id=id)[:6]
     comments = Comment.objects.filter(post=post, reply=None).order_by('-id')
     tag = None
     if tag_slug:
@@ -229,11 +229,14 @@ def AllPost(request):
 def PostCategory(request, name):
     topic = get_object_or_404(Category, name=name)
     post = Post.published_objects.filter(category=topic.id)
+    post1 = Post.published_objects.filter(category=topic.id)[0]
+    post2 = Post.published_objects.filter(category=topic.id)[:3]
+    post3 = Post.published_objects.filter(category=topic.id)[:12]
     kategorie = Category.objects.filter(parent=None).order_by('name')
     breaking = Post.published_objects.all().order_by('-posted')[:6]
-    most_popular = Post.published_objects.filter(category=topic.id).order_by('-views')[:4]  ## SHOW MOST POULAR NEWS
-    recent = Post.published_objects.filter(category=topic.id).order_by('-posted')[0:4]
-    paginator = Paginator(post, 2)
+    most_popular = Post.published_objects.filter(category=topic.id).order_by('-views')[:5]  ## SHOW MOST POULAR NEWS
+    recent = Post.published_objects.filter(category=topic.id).order_by('-posted')[0:5]
+    paginator = Paginator(post, 9)
     page = request.GET.get('page')
     try:
         items = paginator.page(page)
@@ -255,6 +258,9 @@ def PostCategory(request, name):
         'page_range': page_range,
         'most_popular': most_popular,
         'recent': recent,
+        'post1': post1,
+        'post2': post2,
+        'post3': post3,
 
     }
 

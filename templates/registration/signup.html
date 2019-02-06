@@ -1,6 +1,9 @@
 {% extends 'news/base.html' %}
 {% load static %}
+{% block title %} signup {% endblock %}
+
 {% block content %}
+
 <div class="container">
   <div class="row">
         <div class="wrapper" style="background-image: url({% static 'img/backrgound.jpg' %});">
@@ -8,38 +11,44 @@
             <div class="section-heading">
                 <h6>Sign Up </h6>
             </div>
-              <form method="post">
+              <form method="POST">
                 {% csrf_token %}
                 <div class="form-group">
                     <div class="form-wrapper">
                         <label>First Name</label>
                         {{ form.first_name }}
+                         <label> {{form.first_name.errors}} </label>
                     </div>
                     <div class="form-wrapper">
                         <label>Last Name</label>
                         {{ form.last_name }}
+                        <label> {{form.last_name.errors}} </label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-wrapper">
                         <label>User Name</label>
+                        <p> {{form.username.errors}} </p>
                         {{ form.username }}
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-wrapper">
                         <label>Email</label>
+                         <p> {{form.email.errors}} </p>
                         {{ form.email }}
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-wrapper">
                         <label>Password</label>
+                        <p> {{form.password1.errors}} </p>
                         {{ form.password1 }}
                     </div>
                     <div class="form-wrapper">
                         <label>Confirm Password</label>
                         {{ form.password2 }}
+                        <label>{{form.password2.errors}} </label>
                     </div>
                 </div>
                 <button type="submit">Sign up</button>
@@ -48,7 +57,6 @@
         </div>
   </div>
 </div>
-
 <style>
     @font-face {
   font-family: "Muli-Regular";
@@ -70,7 +78,9 @@ input, textarea, select, button {
   font-size: 13px; }
 
 p, h1, h2, h3, h4, h5, h6, ul {
-  margin: 0; }
+  margin: 0;
+  color: red;
+   }
 
 img {
   max-width: 100%; }
@@ -213,4 +223,5 @@ label {
 }
 /*# sourceMappingURL=style.css.map */
 </style>
+
 {% endblock %}
