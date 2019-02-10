@@ -1,0 +1,46 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% block title %} search  result {% endblock %}
+
+{% block content %}
+
+{% if all_post.exists %}
+<div class="container"  style="margin-bottom: 100px;">
+    <div class="col-12 col-md-12 col-lg-12">
+        <div class="section-heading" style="margin-bottom: 10px;">
+            <h6>আপনার অনুসন্ধানের উপর {{ all_post.count }} টি ফলাফল পাওয়া গিয়াছে </h6>
+        </div>
+        {% for p in all_post %}
+        <!-- Single Featured Post -->
+        <div class="single-blog-post small-featured-post d-flex">
+            <div class="post-thumb">
+                <a href="{% url 'news:PostDetail' id=p.id %}"><img src="{{ p.image.url }}" alt=""></a>
+            </div>
+            <div class="post-data">
+                <div class="post-meta">
+                    <a href="{% url 'news:PostDetail' id=p.id %}" class="post-title">
+                        <h6>{{ p.title }}</h6>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+<div class="container"  style="margin-bottom: 100px;">
+    <div class="col-12 col-md-12 col-lg-12">
+        <!-- Single Featured Post -->
+        <div class="single-blog-post small-featured-post d-flex">
+            <div class="post-data">
+                <div class="post-meta">
+                    <h2> দুঃখিত আপনার অনুসন্ধানের উপর কোন ফলাফল পাওয়া যায় নি ।</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% endblock %}

@@ -1,6 +1,6 @@
 {% extends 'news/base.html' %}
 {% load static %}
-{% block title %} স্বাগতম {% endblock %}
+{% block title %} Post Category || {{ topic.name }} {% endblock %}
 
 {% block content %}
 
@@ -50,48 +50,20 @@
 
                 <div class="col-12 col-md-6 col-lg-4">
                     <!-- Single Featured Post -->
-                    {% for c in items %}
+                    {% for c in post3 %}
                     <div class="single-blog-post small-featured-post d-flex">
-                            <div class="post-data">
-                                <div class="post-meta">
-                                    <a href="{% url 'news:PostDetail' id=c.id %}" class="post-title">
-                                        <h6>{{ c.title }}</h6>
-                                    </a>
-                                </div>
+                        <div class="post-thumb">
+                            <a href="{% url 'news:PostDetail' id=c.id %}"><img src="{{ c.image.url }}" alt=""></a>
+                        </div>
+                        <div class="post-data">
+                            <div class="post-meta">
+                                <a href="{% url 'news:PostDetail' id=c.id %}" class="post-title">
+                                    <h6>{{ c.title }}</h6>
+                                </a>
                             </div>
                         </div>
+                    </div>
                     {% endfor %}
-                        <!-- ##### Pagination start ##### -->
-                    {% if items.has_other_pages %}
-                    <nav aria-label="Page navigation example" style="margin-top:-30px;">
-                        <ul class="pagination mt-50">
-                            {% if items.has_previous %}
-                            <li class="page-item active">
-                              <a class="page-link" href="?page={{ items.previous_page_number }}">Prev</a>
-                            </li>
-                            {% else %}
-                            <li class="page-item disabled">
-                              <a class="page-link"><span>Prev</span></a>
-                            </li>
-                            {% endif %}
-                            {% for i in page_range %}
-                                {% if items.number == i %}
-                                  <li class="page-item active">
-                                    <a class="page-link" href="#">{{i}}<span class="sr-only">(current)</span></a>
-                                  </li>
-                              {% else %}
-                                    <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
-                              {% endif %}
-                            {% endfor %}
-                            {% if items.has_next %}
-                                <li class="page-item"><a class="page-link" aria-label="Next" href="?page={{items.next_page_number}}">Next</a></li>
-                            {% else %}
-                                <li class="page-item disabled"><a class="page-link"><span>Next</span></a></li>
-                            {% endif %}
-                        </ul>
-                    </nav>
-                    {% endif %}
-                    <!-- ##### Pagination end ##### -->
                 </div>
             </div>
         </div>
@@ -106,7 +78,7 @@
                 <!-- Editors Pick -->
                 <div class="col-12 col-md-7 col-lg-8">
                     <div class="row">
-                         {% for c in post3 %}
+                         {% for c in items %}
                         <!-- Single Post -->
                         <div class="col-12 col-lg-4">
                             <div class="single-blog-post">
@@ -122,6 +94,37 @@
                         </div>
                          {% endfor %}
                     </div>
+                    <!-- ##### Pagination start ##### -->
+                        {% if items.has_other_pages %}
+                        <nav aria-label="Page navigation example" style="margin-top:-30px;">
+                            <ul class="pagination mt-50">
+                                {% if items.has_previous %}
+                                <li class="page-item active">
+                                  <a class="page-link" href="?page={{ items.previous_page_number }}">Prev</a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disabled">
+                                  <a class="page-link"><span>Prev</span></a>
+                                </li>
+                                {% endif %}
+                                {% for i in page_range %}
+                                    {% if items.number == i %}
+                                      <li class="page-item active">
+                                        <a class="page-link" href="#">{{i}}<span class="sr-only">(current)</span></a>
+                                      </li>
+                                  {% else %}
+                                        <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                                  {% endif %}
+                                {% endfor %}
+                                {% if items.has_next %}
+                                    <li class="page-item"><a class="page-link" aria-label="Next" href="?page={{items.next_page_number}}">Next</a></li>
+                                {% else %}
+                                    <li class="page-item disabled"><a class="page-link"><span>Next</span></a></li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                        {% endif %}
+                        <!-- ##### Pagination end ##### -->
                 </div>
 
                 <!-- World News -->

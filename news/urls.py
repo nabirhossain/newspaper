@@ -14,8 +14,14 @@ urlpatterns = [
     path('articles/signup', views.signup, name='signup'),
     path('articles/login/',views.LogIn, name='login'),
     path('articles/logout/',views.LogOut, name='logout'),
+    path('articles/change-password/',views.change_password, name='change_password'),
     path('articles/post-create/', views.post_create, name='post_create'),
     path('articles/post_update/<int:id>', views.PostUpdate, name='post_update'),
     path('articles/post_update/<int:id>', views.PostDelete, name='post_delete'),
+    path('articles/search_posts/', views.search_posts, name='search_posts'),
+
+
+    #account confirmation url
+    path('activate/<uid>/<token>',views.activate, name='activate'),
 
 ]

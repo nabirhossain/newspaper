@@ -18,9 +18,9 @@ class CategoryAdmin(ImportExportModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(ImportExportModelAdmin):
-    list_display = ["__str__",'views','category','status','posted']
+    list_display = ["__str__",'views','category','status','posted', "id"]
     prepopulated_fields = {'slug': ('title',)}
-    list_filter = ['posted','author']
+    list_filter = ['posted','author','category']
     search_fields = ["__str__"]
     list_per_page = 10
     pass

@@ -1,6 +1,6 @@
 {% extends 'news/base.html' %}
 {% load static %}
-{% block title %} স্বাগতম {% endblock %}
+{% block title %} Welcome to bdnews71 {% endblock %}
 
 {% block content %}
 
@@ -9,7 +9,7 @@
 <div class="featured-post-area" style="margin-top:-60px">
     <div class="container">
         <div class="section-heading">
-            <a href="{% url 'news:category' name=cricket1.category.name %}"><h6> দেশের খবর  </h6></a>
+            <a href="{% url 'news:category' name=bangladesh1.category.name %}"><h6> দেশের খবর  </h6></a>
          </div>
         <div class="row" style="margin-top:-60px">
             <div class="col-12 col-md-6 col-lg-8">
@@ -19,17 +19,17 @@
                             
                         <div class="single-blog-post featured-post">
                             <div class="post-thumb">
-                                <a href="{% url 'news:PostDetail' id=post.id %}"><img src="{{ post.image.url }}" alt=""></a>
+                                <a href="{% url 'news:PostDetail' id=bangladesh1.id %}"><img src="{{ bangladesh1.image.url }}" alt=""></a>
                             </div>
                             <div class="post-data">
-                                <a href="{% url 'news:PostDetail' id=post.id %}" class="post-title">
+                                <a href="{% url 'news:PostDetail' id=bangladesh1.id %}" class="post-title">
                                     <h6>{{ post.title }}</h6>
                                 </a>
                                 <div class="post-meta">
                                     <p class="post-excerp">
                                             {{ post.body|truncatewords:35|safe }}
 
-                                    <a href="{% url 'news:PostDetail' id=post.id %}" style="color: red;">
+                                    <a href="{% url 'news:PostDetail' id=bangladesh1.id %}" style="color: red;">
                                         বিস্তারিত
                                     </a>
                                     </p>
@@ -41,7 +41,7 @@
 
                     <div class="col-12 col-lg-5">
                         <!-- Single Featured Post -->
-                        {% for s in post1 %}
+                        {% for s in bangladesh2 %}
                         <div class="single-blog-post featured-post-2">
                             <div class="post-thumb">
                                 <a href="{% url 'news:PostDetail' id=s.id %}"><img src="{{ s.image.url }}" alt=""></a>
@@ -134,10 +134,10 @@
                             {% endfor %}
                         </div>
 
-                        <div class="section-heading">
+                        <div class="section-heading" style="margin-left:13px;">
                             <a href="{% url 'news:category' name=business1.category.name %}"><h6>অর্থ-বাজার-বাণিজ্য</h6></a>
                         </div>
-                        <div class="row" style="margin-top:-60px">
+                        <div class="row" style="margin-top:-70px; margin-left:-3px; margin-bottom: 20px;">
                              <!-- Single Post -->
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="single-blog-post style-3">
@@ -268,7 +268,7 @@
                                     <div class="tab-pane fade" id="nav-recent" role="tabpanel" aria-labelledby="nav-profile-tab">
                                       {% for r in recent %}
                                         <div class="single-popular-post d-flex flex-row">
-                                            <div class="popular-thumb" style="height: 80px; width: 100px;">
+                                            <div class="popular-thumb" style="height: 40px; width: 100px;">
                                                 <a href="{% url 'news:PostDetail' id=r.id %}"><img class="img-fluid" src="{{ r.image.url }}" alt=""></a>
                                             </div>
                                             <div class="popular-details">
@@ -286,7 +286,7 @@
                     <div class="section-heading">
                         <a href="{% url 'news:category' name=tech1.category.name %}"><h6>বিজ্ঞান-প্রযুক্তির খবর</h6></a>
                     </div>
-                    <div class="row" style="margin-top: -60px;">
+                    <div class="row" style="margin-top: -60px; margin-left:-3px;">
                         {% for p in tech %}
                         <!-- Single Featured Post -->
                         <div class="single-blog-post small-featured-post d-flex">
@@ -325,11 +325,13 @@
                 <!-- Single Video Post -->
                 <div class="col-12 col-sm-6 col-md-4">
                     <div class="single-video-post">
+                        <h3>This is our video title</h3>
                         <img src="{% static 'img/bg-img/video1.jpg' %}" alt="">
                         <!-- Video Button -->
                         <div class="videobtn">
                             <a href="{% url 'news:category' name=tech1.category.name %}" class="videoPlayer"><i class="fa fa-play" aria-hidden="true"></i></a>
                         </div>
+                        <!--<h3>This is our video title</h3>-->
                     </div>
                 </div>
 
@@ -392,7 +394,7 @@
 
                         <!-- Single Post -->
                         <div class="col-12 col-md-6 col-lg-6">
-                            <a href="{% url 'news:category' name=finance1.category.name %}"><h6>ব্যবসা ও অর্থনীতির সংবাদ</h6></a>
+                            <a href="{% url 'news:category' name=finance1.category.name %}"><h6 style="margin-top: 24px;">ব্যবসা ও অর্থনীতির সংবাদ</h6></a>
                                 {% for p in finance %}
                             <!-- Single Featured Post -->
                             <div class="single-blog-post small-featured-post d-flex">
@@ -412,7 +414,7 @@
                                 {% endfor %}
                         </div>
                     </div>
-                    <div class="row" style="margin-top:40px">
+                    <div class="row" style="margin-top:40px; margin-left:-3px;">
                         <div class="section-heading">
                             <a href="{% url 'news:category' name=opinion1.category.name %}"><h6>মতামত</h6></a>
                         </div>
